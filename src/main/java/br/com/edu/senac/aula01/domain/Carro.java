@@ -1,10 +1,14 @@
 package br.com.edu.senac.aula01.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
@@ -23,6 +27,9 @@ public class Carro {
 	@ManyToOne
 	@NotNull
 	private Marca marca;
+	
+	@OneToMany(mappedBy="carro")
+	private List<Avaliacao> avaliacoes = new ArrayList<>();
 
 	public Long getId() {
 		return id;
